@@ -1,5 +1,5 @@
 # Running the code in this file results in the following:
-# 1. Ttraining and the test sets are merged to create one data set.
+# 1. Training and the test sets are merged to create one data set.
 # 2. Mean and standard deviation for each measurement are extracted.
 # 3. Descriptive activity names are added to the data set.
 # 4. Descriptive variable names are added to the data set. 
