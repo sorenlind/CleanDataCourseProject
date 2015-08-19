@@ -1,7 +1,7 @@
 # CleanDataCourseProject #
 
 ## What is it? ##
-This project contains Søren Lind Kristiansen's solution for the course project for the *Getting and Cleaning Data* on [Cousera](https://www.coursera.org).
+This project contains Søren Lind Kristiansen's solution for the course project for the *Getting and Cleaning Data* course on [Cousera](https://www.coursera.org).
 
 ## What does it do?  ##
 
