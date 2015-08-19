@@ -17,3 +17,6 @@
 # produced vignettes
 vignettes/*.html
 vignettes/*.pdf
+
+# Raw Data Files
+data/
