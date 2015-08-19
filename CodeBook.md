@@ -121,4 +121,4 @@ The name of the measured activity performed by the subject. One of the values  *
 * `fBodyBodyGyroMag-meanFreq()`
 * `fBodyBodyGyroJerkMag-mean()`
 * `fBodyBodyGyroJerkMag-std()`
-* `fBodyBodyGyroJerkMag-meanFreq()
+* `fBodyBodyGyroJerkMag-meanFreq()`
