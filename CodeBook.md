@@ -25,6 +25,50 @@ In step 2 above, *mean and standard deviation for each measurement are extracted
 
 This approach is chosen because it is inclusive in the sense that it includes the obvious as well as the less obvious variables, for example `fBodyAcc-meanFreq()-X`. If some of the variables turn out to be irrelevant, it is easier to get rid of them later than it would be to add them, had we not included them and later realized that they were relevant.
 
+## Can you explain the transformation steps in detail? ##
+Roughly speaking, we have three kinds of files in the original data set: Training data, test data and some meta data. The latter contains the names of the different features as well as the names of the different activities. We will eventually merge the training and test data by stacking them 'on top of each other'. But since both training and test data come in several files we need to do some pre-processing steps. Further, the data files come without column headers so we need to do some processing to add variable names.
+
+We will begin by preparing the test data set. Subsequently we will perform exactly the same steps on the training data set and then finally merge them together. The preparation of each of the data sets (train and test) is carried out as follows.
+
+The train data file, `X_train.txt`, contains neither activity information nor a subject identifier, nor column names, and we will need to add all three in order to eventually build the tidy data. Further, we will only need a fraction of the variables in the file, specifically the ones that contain mean or standard deviation measurements. To achieve this, we perform the following steps:
+
+1. Read training data from `X_train.txt` into data frame.
+2. Add column names using values from `features.txt`.
+3. Remove irrelevant columns (the ones that are neither mean or standard deviation measures).
+4. Read numeric activity values from `X_train.txt` into a data frame.
+5. Read the 'dictionary' containing the names of numeric activity values from the `activity_labels.txt` file.
+6. Replace the numeric activity values in the data frame with the activity names.
+7. Read the subject IDs from `subject_train.txt` into a data frame.
+8. Merge the data frames containing subject IDs, activity labels and training data by binding them together *side-by-side*.
+
+Pictorially step 8 above can be represented as follows. The subject IDs are shown as `S`'s, the activity label names are shown as `L`'s and finally, the relevant columns of the training data are shown as `X`'s:
+
+
+```
+S     L     XXX     SLXXX
+S     L     XXX     SLXXX
+S  +  L  +  XXX  =  SLXXX
+S     L     XXX     SLXXX
+S     L     XXX     SLXXX
+```
+
+Having created such a data frame for the training data, we can now do exactly the same for the test data. And finally we can merge the two resulting data frames by stacking them *on top of each other*. This is don as shown below:
+
+```
+                                    SLXXX
+                                    SLXXX
+SLXXX             SLXXX             SLXXX
+SLXXX             SLXXX             SLXXX
+SLXXX (train)  +  SLXXX (test)   =  SLXXX
+SLXXX             SLXXX             SLXXX       
+SLXXX             SLXXX             SLXXX
+                                    SLXXX
+                                    SLXXX
+                                    SLXXX
+```
+
+Having this merged data set, we are now ready to calculate the means for each activity and subject.
+
 ## Data Columns ##
 
 The output data set adheres to the rules of tidy data. Specifically each variable you is one and only column, and each different observation of that variable is in a different row. Specifically each row corresponds to one activity for one subject. Since there are six different activities (see below) and 30 subjects, the total number of rows in the data is 6 * 30 = 180.
