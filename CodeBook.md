@@ -25,7 +25,7 @@ In step 2 above, *mean and standard deviation for each measurement are extracted
 
 This approach is chosen because it is inclusive in the sense that it includes the obvious as well as the less obvious variables, for example `fBodyAcc-meanFreq()-X`. If some of the variables turn out to be irrelevant, it is easier to get rid of them later than it would be to add them, had we not included them and later realized that they were relevant.
 
-## Can you explain the transformation steps in detail? ##
+### Can you explain the transformation steps in detail? ###
 Roughly speaking, we have three kinds of files in the original data set: Training data, test data and some meta data. The latter contains the names of the different features as well as the names of the different activities. We will eventually merge the training and test data by stacking them 'on top of each other'. But since both training and test data come in several files we need to do some pre-processing steps. Further, the data files come without column headers so we need to do some processing to add variable names.
 
 We will begin by preparing the test data set. Subsequently we will perform exactly the same steps on the training data set and then finally merge them together. The preparation of each of the data sets (train and test) is carried out as follows.
