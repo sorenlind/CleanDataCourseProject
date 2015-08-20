@@ -18,13 +18,20 @@ The tidy data set has been made by performing the following steps on the origina
 4. Descriptive variable names are added to the data set. 
 5. From the data set in step 4, a second, independent tidy data set with the average of each variable for each activity and each subject is created and persisted.
 
+### How are the mean and standard deviation measurements identified? ###
+In step 2 above, *mean and standard deviation for each measurement are extracted*. The original data set consists of several hundred variables, only some of them being mean or standard deviation measurements. Some of these can easily be identified as mean or standard deviation measurements, for example `tBodyAcc-mean()-X` and `tBodyAcc-std()-X`. Others may be a bit less obvious, for example `fBodyAcc-meanFreq()-X`. The method chosen for identifying the measurements to extract is as follows:
+
+*Extract all variables for which the original variable name contains the substring `mean` or the substring `std`*. 
+
+This approach is chosen because it is inclusive in the sense that it includes the obvious as well as the less obvious variables, for example `fBodyAcc-meanFreq()-X`. If some of the variables turn out to be irrelevant, it is easier to get rid of them later than it would be to add them, had we not included them and later realized that they were relevant.
+
 ## Data Columns ##
 
-The output data set adheres to the rules of tidy data. Specifically each variable you is one and only column, and each different observation of that variable is in a different row. Specifically each row corresponds to one activity for one subject. Since there are six different activities (*WALKING*, *WALKING\_UPSTAIRS*, *WALKING\_DOWNSTAIRS*, *SITTING*, *STANDING* and *LAYING*) and 30 subjects, the total number of rows in the data is 6 * 30 = 180.
+The output data set adheres to the rules of tidy data. Specifically each variable you is one and only column, and each different observation of that variable is in a different row. Specifically each row corresponds to one activity for one subject. Since there are six different activities (see below) and 30 subjects, the total number of rows in the data is 6 * 30 = 180.
 
 Each row is made up of the following columns:
 * ID of the subject (a value from 1 to 30)
-* The activity of the observation (*WALKING*, *WALKING\_UPSTAIRS*, *WALKING\_DOWNSTAIRS*, *SITTING*, *STANDING* or *LAYING*).
+* The activity of the observation (`WALKING`, `WALKING_UPSTAIRS`, `WALKING_DOWNSTAIRS`, `SITTING`, `STANDING` or `LAYING`).
 * 79 variables beginning with `tBodyAcc-mean()-X`, and ending with `fBodyBodyGyroJerkMag-meanFreq()`.
 
 Each variable contains the average of the values for that variable in the original data set, for each activity and each subject.
@@ -33,13 +40,9 @@ The tidy data consists of the following columns
 
 ### Identifiers ###
 
-#### Subject ####
+* `Subject` - An identifier for each subject. A value between 1 and 30.
+* `Activity` - The name of the measured activity performed by the subject. One of the values `WALKING`, `WALKING_UPSTAIRS`, `WALKING_DOWNSTAIRS`, `SITTING`, `STANDING` and `LAYING`.
 
-Subject identifier, a value between 1 and 30.
-
-#### Activity ####
-
-The name of the measured activity performed by the subject. One of the values  *WALKING*, *WALKING\_UPSTAIRS*, *WALKING\_DOWNSTAIRS*, *SITTING*, *STANDING* and *LAYING*.
 
 ### Measurements ###
 
