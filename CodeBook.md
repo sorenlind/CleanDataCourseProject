@@ -52,7 +52,7 @@ S     L     XXX     SLXXX
 S     L     XXX     SLXXX
 ```
 
-Having created such a data frame for the training data, we can now do exactly the same for the test data. And finally we can merge the two resulting data frames by stacking them *on top of each other*. This is don as shown below:
+Having created such a data frame for the training data, we can now do exactly the same for the test data. And finally we can merge the two resulting data frames by stacking them *on top of each other*. This is done as shown below:
 
 ```
                                     SLXXX
